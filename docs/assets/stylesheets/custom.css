@@ -1,0 +1,55 @@
+.md-typeset__table {
+  width: 100%;
+}
+
+.md-typeset__table table:not([class]) {
+  display: table
+}
+
+.text-red {
+  color: #f44336;
+}
+.text-green {
+  color: #4CAF50;
+}
+.text-blue {
+  color: #2196F3;
+}
+
+/* Enhanced link hover effects for instant preview */
+.md-content a:hover {
+  text-decoration: underline;
+  transition: all 0.2s ease;
+}
+
+/* Tooltip-like behavior for abbreviations */
+abbr[title] {
+  position: relative;
+  cursor: help;
+  border-bottom: 1px dotted;
+}
+
+abbr[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  left: 0;
+  top: 100%;
+  z-index: 1000;
+  padding: 4px 8px;
+  background: var(--md-default-bg-color);
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 4px;
+  font-size: 0.8em;
+  white-space: nowrap;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Style for reference links */
+.reference-link {
+  position: relative;
+  display: inline-block;
+}
+
+.reference-link:hover {
+  color: var(--md-accent-fg-color);
+}

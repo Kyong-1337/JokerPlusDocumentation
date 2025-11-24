@@ -21,8 +21,8 @@ theme:
         name: Switch to light mode
   features:
     - navigation.tabs
-    - navigation.sections
     - navigation.top
+    - navigation.path
     - navigation.tracking
     - search.highlight
     - search.share
@@ -30,6 +30,16 @@ theme:
     - toc.follow
     - content.code.copy
     - content.code.annotate
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - content.tooltips
+
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+
+extra_css:
+  - assets/stylesheets/custom.css
 
 markdown_extensions:
   - pymdownx.highlight:
@@ -38,41 +48,81 @@ markdown_extensions:
       pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - admonition
   - pymdownx.details
   - pymdownx.tabbed:
       alternate_style: true
+      combine_header_slug: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
   - tables
   - attr_list
   - md_in_html
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.mark
+  - pymdownx.caret
+  - pymdownx.tilde
+  - pymdownx.keys
+  - footnotes
+  - abbr
+  - def_list
+  - pymdownx.critic
+  - pymdownx.arithmatex:
+      generic: true
 
 plugins:
   - search
+  - glightbox
 
 nav:
   - Home:
     - Introduction: index.md
     - Version History: version.md
-  - Encryption: encryption.md
+    - Syntax Reference: code_examples.md
+  - Authentication:
+    - Overview: authentication/overview.md 
+    - Encryption: authentication/encryption.md
   - API Endpoints:
-    - On Boarding: api/onboarding.md
-    - Account Settings: api/account_settings.md
-    - Security: api/security.md
-    - Wallet: api/wallet.md
-    - Lottery: api/4d.md
-    - Lucky Seven: api/lucky_seven.md
-    - Chat: api/chat.md
-    - Beta Mission: api/beta_mission.md
-    - Feedback: api/feedback.md
-    - Soccer: api/soccer.md
-    - VIP Benefit: api/vip_benefit.md
-    - Customer Service: api/customer_service.md
-    - Slots: api/slots.md
-    - Live Casino: api/live_casino.md
+    - On Boarding:
+      - Overview: api/onboarding/onboarding.md
+      - Login by Social App: api/onboarding/login_by_social_app.md
+      - Login by Username: api/onboarding/login_by_username.md
+    - Account Settings:
+      - Overview: api/account_settings/account_settings.md
+    - Security:
+      - Overview: api/security/security.md
+    - Wallet:
+      - Overview: api/wallet/wallet.md
+    - Lottery:
+      - Overview: api/lottery/4d.md
+    - Lucky Seven:
+      - Overview: api/lucky_seven/lucky_seven.md
+    - Chat:
+      - Overview: api/chat/chat.md
+    - Beta Mission:
+      - Overview: api/beta_mission/beta_mission.md
+    - Feedback:
+      - Overview: api/feedback/feedback.md
+    - Soccer:
+      - Overview: api/soccer/soccer.md
+    - VIP Benefit:
+      - Overview: api/vip/vip_benefit.md
+    - Customer Service:
+      - Overview: api/customer_service/customer_service.md
+    - Slots:
+      - Overview: api/slots/slots.md
+    - Live Casino:
+      - Overview: api/live_casino/live_casino.md
   - Reference:
-    - Code Reference: reference/error_codes.md
+    - Code Reference: reference/reference_codes.md
     - Glossary: reference/glossary.md

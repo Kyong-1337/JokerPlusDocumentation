@@ -14,12 +14,4 @@ This is your home page. You can start editing this file to add your content.
 - Search functionality
 - Responsive navigation
 
-## Quick Links
-
-- [About](about.md)
-- [Installation](installation.md)
-- [Usage Guide](usage.md)
-
----
-
 *Built with [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/)*
