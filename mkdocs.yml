@@ -54,4 +54,25 @@ plugins:
   - search
 
 nav:
-  - Home: index.md
+  - Home:
+    - Introduction: index.md
+    - Version History: version.md
+  - Encryption: encryption.md
+  - API Endpoints:
+    - On Boarding: api/onboarding.md
+    - Account Settings: api/account_settings.md
+    - Security: api/security.md
+    - Wallet: api/wallet.md
+    - Lottery: api/4d.md
+    - Lucky Seven: api/lucky_seven.md
+    - Chat: api/chat.md
+    - Beta Mission: api/beta_mission.md
+    - Feedback: api/feedback.md
+    - Soccer: api/soccer.md
+    - VIP Benefit: api/vip_benefit.md
+    - Customer Service: api/customer_service.md
+    - Slots: api/slots.md
+    - Live Casino: api/live_casino.md
+  - Reference:
+    - Code Reference: reference/error_codes.md
+    - Glossary: reference/glossary.md
