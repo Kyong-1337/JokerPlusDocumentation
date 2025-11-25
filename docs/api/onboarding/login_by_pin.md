@@ -1,11 +1,11 @@
 
-# Login By Username
+# Login By Pin
 
 ## Requests
 
 | PARAM          | VALUE                                         |
 | :------------- | :-------------------------------------------- |
-| URL            | [MAIN API URL]/Member/LoginByUsername         |
+| URL            | [LOCAL API URL]/Member/LoginByPin             |
 | Request Method | POST                                          |
 | Body Param     | AES_Encrypt([JSON Object], [AES Secret Key]); |
 
@@ -14,8 +14,8 @@
 
 | Key Name          | Data Type | Mandatory | Length | Description                                                             |
 | :---------------- | :-------- | :-------- | ------ | :---------------------------------------------------------------------- |
-| Username          | String    | YES       | 6-30   | Accept A-Z, a-z, 0-9, no symbol allow                                   |
-| Password          | String    | YES       | 8-16   |                                                                         |
+| MemberId          | int       | YES       |        |                                                                         |
+| Pin               | String    | YES       | 4      |                                                                         |
 | NotificationToken | String    | YES       |        | Firebase Token or other notification token                              |
 | OSVersion         | String    | YES       |        |                                                                         |
 | Platform          | Int       | YES       |        | Refer to [Platform](../../reference/reference_codes.md#platform)        |
@@ -172,16 +172,19 @@
         "LinkDateApple": "String",
         "Language": "Int",
         "WinRecordList": [
-                {
-                    "WinNoticeId": int,
-                    "ReceiptId": int,
-                    "GameType": int,
-                    "Lucky7BetStyleId": int
-                    "OrderId": int
-                }
-            ]
+                    {
+                        "WinNoticeId": int,
+                        "ReceiptId": int,
+                        "GameType": int,
+                        "Lucky7BetStyleId": int
+                        "OrderId": int
+
+
+                    }
+                ]
+            }
         }
-    }
+
     ```
 
 

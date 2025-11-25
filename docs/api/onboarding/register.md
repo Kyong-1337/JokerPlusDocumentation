@@ -1,34 +1,42 @@
-# Login Social APP
 
-## Application
-SignIn-Facebook, AppleSignin, googlePopupSignin
+# Register
 
 ## Requests
 
 | PARAM          | VALUE                                         |
 | :------------- | :-------------------------------------------- |
-| URL            | `[MAIN API URL]/Member/LoginBySocialApp`      |
+| URL            | [MAIN API URL]/Member/Register                |
 | Request Method | POST                                          |
+| Request Method | GET                                           |
 | Body Param     | AES_Encrypt([JSON Object], [AES Secret Key]); |
 
 
 ## Parameters
 
-| Key Name          | Data Type | Mandatory | Description                                                             |
-| :---------------- | :-------- | :-------- | :---------------------------------------------------------------------- |
-| SocialAppType     | Int       | YES       | Refer to [Social APP](../../reference/reference_codes.md#social-app)    |
-| SocialUID         | String    | YES       | Social ID                                                               |
-| NotificationToken | String    | YES       | Firebase Token or other notification token                              |
-| OSVersion         | String    | YES       |                                                                         |
-| Platform          | Int       | YES       | Refer to [Platform](../../reference/reference_codes.md#platform)        |
-| PhoneBrand        | String    | YES       | Phone Brand, exp : Samsung, OPPO …                                      |
-| PhoneModel        | String    | YES       | Phone Model                                                             |
-| PhoneImei         | String    | YES       | Phone Imei                                                              |
-| LineBrand         | String    | YES       | Network Brand                                                           |
-| LineCountry       | String    | YES       | Network Brand Country                                                   |
-| AppVersion        | String    | YES       | Joker Plus App Version                                                  |
-| Hash              | String    | YES       | SHA256(SocialAppType + SocialUID + NotificationToken + SHA256 Salt Key) |
-
+| Key Name          | Data Type | Mandatory | Length | Description                                                                                                   |
+| :---------------- | :-------- | :-------- | ------ | :------------------------------------------------------------------------------------------------------------ |
+| Username          | String    | YES       | 6 - 30 | Accept A-Z, a-z, 0-9, no symbol allow                                                                         |
+| Name              | String    | YES       | 6 - 30 | Accept A-Z,a-z no symbol allow                                                                                |
+| RegisterType      | Int       | YES       |        | Refer to [Register Type](../../reference/reference_codes.md#register-type)                                    |
+| RegisterUID       | String    | Optional  |        | If Register type = 1,2,3 , then mandatory. Social ID                                                          |
+| Email             | String    | YES       |        |                                                                                                               |
+| Password          | String    | YES       | 8 - 16 |                                                                                                               |
+| Pin               | String    | YES       | 4      |                                                                                                               |
+| PhoneNumber       | String    | YES       |        | Format 61xxxxxxxxx (Only Digit allow)                                                                         |
+| TACCode           | String    | YES       |        | Tac code register                                                                                             |
+| ReferralBy        | String    | Optional  |        | Upline Member Code                                                                                            |
+| NotificationToken | String    | YES       |        | Firebase Token or other notification token                                                                    |
+| OSVersion         | String    | YES       |        |                                                                                                               |
+| Platform          | Int       | YES       |        | Refer to [Platform](../../reference/reference_codes.md#platform)                                              |
+| PhoneBrand        | String    | YES       |        | Phone Brand, exp : Samsung, OPPO …                                                                            |
+| PhoneModel        | String    | YES       |        | Phone Model                                                                                                   |
+| PhoneImei         | String    | YES       |        | Phone Imei                                                                                                    |
+| LineBrand         | String    | YES       |        | Network Brand                                                                                                 |
+| LineCountry       | String    | YES       |        | Network Brand Country                                                                                         |
+| AppVersion        | String    | YES       |        | Joker Plus App Version                                                                                        |
+| Language          | Int       | Optional  |        | 1: EN 2:CN 3:MS …….. Language Code                                                                            |
+| EmailVerifyId     | Int       | Yes       |        | ID that get from email verification                                                                           |
+| Hash              | String    | YES       |        | "SHA256( Name + Username + Password + Pin + Email + PhoneNumber + TACCode + EmailVerifyId + SHA256 Salt Key)" |
 
 ## Return
 
@@ -41,7 +49,7 @@ SignIn-Facebook, AppleSignin, googlePopupSignin
 | MemberReferralCode    | String    | Yes       | 10-12  |                                                                                               |
 | ImageUrl              | String    | YES       |        |                                                                                               |
 | Phone                 | String    | YES       |        |                                                                                               |
-| ReferralBy            | Int       | YES       |        |                                                                                               |
+| ReferralBy            | String    | YES       |        |                                                                                               |
 | Point                 | Decimal   | YES       |        |                                                                                               |
 | CreateDate            | String    | YES       |        | We return the time in Universal Time format. Please convert to your local time (like UTC+10). |
 | WalletCash            | Decimal   | YES       |        |                                                                                               |
@@ -51,7 +59,7 @@ SignIn-Facebook, AppleSignin, googlePopupSignin
 | WithdrawBankAccNumber | String    | YES       |        |                                                                                               |
 
 **WithdrawBankAccountList**
- 
+
 | Key Name      | Data Type | Mandatory | Length | Description                                              |
 | :------------ | :-------- | :-------- | :----- | :------------------------------------------------------- |
 | Id            | Int       | YES       |        | Link to some related table                               |
@@ -62,13 +70,13 @@ SignIn-Facebook, AppleSignin, googlePopupSignin
 
 **DepositBankList**
 
-| Key Name        | Data Type | Mandatory | Length | Description                                              |
-| :-------------- | :-------- | :-------- | :----- | :------------------------------------------------------- |
-| Id              | Int       | YES       |        | Link to some related table                               |
-| BankId          | Int       | YES       |        | Refer to [Bank](../../reference/reference_codes.md#bank) |
-| AccountName     | String    | YES       |        |                                                          |
-| AccountNumber   | String    | YES       |        |                                                          |
-| MemberSecretKey | String    | YES       |        |                                                          |
+| Key Name        | Data Type | Mandatory | Length | Description                |
+| :-------------- | :-------- | :-------- | :----- | :------------------------- |
+| Id              | Int       | YES       |        | Link to some related table |
+| BankId          | Int       | YES       |        | Refer to 7.9 Bank          |
+| AccountName     | String    | YES       |        |                            |
+| AccountNumber   | String    | YES       |        |                            |
+| MemberSecretKey | String    | YES       |        |                            |
 
 **InterestList**
 
@@ -76,6 +84,7 @@ SignIn-Facebook, AppleSignin, googlePopupSignin
 | :------- | :-------- | :-------- | :----- | :---------- |
 | Id       | Int       | YES       |        |             |
 | Name     | String    | YES       |        |             |
+
 
 **CreditCardList**
 
@@ -87,6 +96,7 @@ SignIn-Facebook, AppleSignin, googlePopupSignin
 | CardHolderName   | String    | YES       |        |                                                                                               |
 | ExpiryDate       | String    | YES       |        |                                                                                               |
 | IsDefault        | Bool      | YES       |        |                                                                                               |
+|                  |           |           |        |                                                                                               |
 | LocalAPIURL      | String    | YES       |        |                                                                                               |
 | LoginFacebook    | String    | YES       |        |                                                                                               |
 | LoginGoogle      | String    | YES       |        |                                                                                               |
@@ -94,17 +104,7 @@ SignIn-Facebook, AppleSignin, googlePopupSignin
 | LinkDateFacebook | String    | YES       |        | We return the time in Universal Time format. Please convert to your local time (like UTC+10). |
 | LinkDateGoogle   | String    | YES       |        | We return the time in Universal Time format. Please convert to your local time (like UTC+10). |
 | LinkDateApple    | String    | YES       |        | We return the time in Universal Time format. Please convert to your local time (like UTC+10). |
-| Language         | Int       | YES       |        | 1: EN 2:CN 3:MS …….. Language Code                                                            |
-
-**Win Record List**
-
-| Key Name         | Data Type | Mandatory | Length | Description                                                                    |
-| :--------------- | :-------- | :-------- | :----- | :----------------------------------------------------------------------------- |
-| WinNoticeId      | Int       | YES       |        | Notification ID                                                                |
-| ReceiptId        | Int       | YES       |        | Win receipt Id for lucky7 (return 0 for GameType = 1)                          |
-| GameType         | Int       | YES       |        | Refer to [GameType](../../reference/reference_codes.md#game-type-alternative)  |
-| Lucky7BetStyleId | Int       | YES       |        | Refer to [Lucky7BetStyle](../../reference/reference_codes.md#lucky7-bet-style) |
-| OrderId          | int       | YES       |        | OrderId for GameType = 1, return 0 for GameType = 2"                           |
+| Language         | Int       | YES       |        | Refer to [Language](../../reference/reference_codes.md#language)                              |
 
 ## Response
 
@@ -171,36 +171,37 @@ SignIn-Facebook, AppleSignin, googlePopupSignin
             "LinkDateFacebook": "String",
             "LinkDateGoogle": "String",
             "LinkDateApple": "String",
-            "Language": "Int",
-            "WinRecordList": [
-                        {
-                            "WinNoticeId": int,
-                            "ReceiptId": int,
-                            "GameType": int,
-                            "Lucky7BetStyleId": int
-                            "OrderId": int
-                        }
-                    ]
-                }
-            }
+            "Language": "Int"
+        }
+    }
 
     ```
 
 
-## Response Message & Code
+## Response Code & Message
 
 
-| ResponseCode | ReponseMessage                                                                                      |
-| ------------ | --------------------------------------------------------------------------------------------------- |
-| 3            | Account not found, please register                                                                  |
-| 2            | You have reach maximun invalid password access, please contact customer service for unlock account. |
-| 1            | Account blocked, please contact customer service.                                                   |
-| 0            | Success                                                                                             |
-| -1           | Invalid Access                                                                                      |
-| -2           | Internal server error                                                                               |
-| -3           | Unexpected error                                                                                    |
-| -4           | Member not found                                                                                    |
-| -5           | Invalid social app                                                                                  |
-
-
-
+| ResponseCode | ReponseMessage                                |
+| ------------ | --------------------------------------------- |
+| 12           | Your referral code is incorrect               |
+| 11           | Fail to verify email                          |
+| 10           | Invalid referral code                         |
+| 9            | This email already taken please try again     |
+| 8            | This username already taken please try again  |
+| 7            | Account already register, please try to login |
+| 6            | Invalid password                              |
+| 5            | Invalid phone number                          |
+| 4            | Invalid pin                                   |
+| 3            | Invalid username                              |
+| 2            | Invalid email                                 |
+| 1            | Invalid name                                  |
+| 0            | Success                                       |
+| -1           | Invalid Access                                |
+| -2           | Internal server error                         |
+| -3           | Unexpected error                              |
+| -4           | Invalid social media platform uid             |
+| -5           | Invalid register type                         |
+| -6           | Member code duplicate                         |
+| -7           | Can't find verify email record                |
+| -8           | Member code lock please try again later       |
+| -9           | Haven't join waitlist                         |

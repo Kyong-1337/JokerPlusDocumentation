@@ -1,6 +1,8 @@
 site_name: JokerPlus Documentation
 site_description: Documentation for JokerPlus
 site_author: Your Name
+site_url: https://localhost:7242/docs/
+use_directory_urls: true
 
 theme:
   name: material
@@ -21,6 +23,7 @@ theme:
         name: Switch to light mode
   features:
     - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.top
     - navigation.path
     - navigation.tracking
@@ -42,6 +45,11 @@ extra_css:
   - assets/stylesheets/custom.css
 
 markdown_extensions:
+  - material.extensions.preview:
+        configurations:
+          - targets:
+              include:
+                - reference/*
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
@@ -82,12 +90,17 @@ markdown_extensions:
 
 plugins:
   - search
-  - glightbox
+
+
+extra:
+  consent:
+    title: Cookie consent
+    description: >
+      This page uses cookie
 
 nav:
   - Home:
     - Introduction: index.md
-    - Version History: version.md
     - Syntax Reference: code_examples.md
   - Authentication:
     - Overview: authentication/overview.md 
@@ -97,6 +110,28 @@ nav:
       - Overview: api/onboarding/onboarding.md
       - Login by Social App: api/onboarding/login_by_social_app.md
       - Login by Username: api/onboarding/login_by_username.md
+      - Login by Pin: api/onboarding/login_by_pin.md
+      - Register: api/onboarding/register.md
+      - Check Username: api/onboarding/check_username.md
+      - Username Suggestion: api/onboarding/username_suggestions.md
+      - Verify Account For Reset Password: api/onboarding/verify_account_for_reset_password.md
+      - Send Verify Code: api/onboarding/send_verify_code.md
+      - Verify Code (Main): api/onboarding/verify_code_main.md
+      - Verify Code (Local): api/onboarding/verify_code_local.md
+      - Verify Email: api/onboarding/verify_email.md
+      - Reset Password: api/onboarding/reset_password.md
+      - Send Verify Code For Reset Pin: api/onboarding/send_verify_code_for_reset_pin.md
+      - Reset Pin: api/onboarding/reset_pin.md
+      - Get Interest List: api/onboarding/get_interest_list.md
+      - Save Member Interest: api/onboarding/save_member_interest.md
+      - Check Email: api/onboarding/check_email.md
+      - Check Email Verification: api/onboarding/check_email_verification.md
+      - Check Referral Code: api/onboarding/check_referral_code.md
+      - Check Balance: api/onboarding/check_balance.md
+      - Join Waitlist: api/onboarding/join_waitlist.md
+      - Check Waitlist: api/onboarding/check_waitlist.md
+      - Recover Username by email: api/onboarding/recover_username_by_email.md
+      - Update Win Notification: api/onboarding/update_win_notification_status.md
     - Account Settings:
       - Overview: api/account_settings/account_settings.md
     - Security:
@@ -126,3 +161,4 @@ nav:
   - Reference:
     - Code Reference: reference/reference_codes.md
     - Glossary: reference/glossary.md
+  - Change Log: changelog.md

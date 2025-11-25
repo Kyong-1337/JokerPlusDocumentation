@@ -4,7 +4,7 @@ Welcome to the official documentation for JokerPlus.
 
 ## Getting Started
 
-This is your home page. You can start editing this file to add your content.
+Start by heading to [Authentication](authentication/overview.md)
 
 ## Features
 

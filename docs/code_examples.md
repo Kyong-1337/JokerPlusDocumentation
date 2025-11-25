@@ -18,7 +18,7 @@ This page demonstrates all available MkDocs Material syntax with minimal example
 `Inline code` and normal text
 
 ## Links
-
+[google](www.gooogle.com )
 [External link](https://mkdocs.org)
 
 [Internal link](index.md)
@@ -57,12 +57,12 @@ def hello():
 ```
 
 ### Multi-Language Tabs
-=== "Python"
+=== "REsponse"
     ```python
     print("Hello from Python")
     ```
 
-=== "JavaScript"
+=== "REquest"
     ```javascript
     console.log("Hello from JS");
     ```
