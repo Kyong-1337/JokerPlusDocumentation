@@ -1,92 +1,181 @@
-# JokerPlus Documentation with Authentication
+# JokerPlus Documentation
 
-This documentation site includes a simple client-side authentication system to protect your content.
+A comprehensive API documentation 
 
-## Features
 
-- 🔐 **Client-side authentication** - No server required
-- 🎨 **Material Design** - Beautiful login interface that matches MkDocs Material theme
-- 🌙 **Dark mode support** - Works with light and dark themes
-- 📱 **Mobile responsive** - Works on all devices
-- ⏰ **Session management** - 24-hour session timeout
-- 🔄 **Remember login** - Uses localStorage to remember authenticated users
+
+- Python 3.8 or higher
+- pip (Python package manager)
+
+## Installation
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Kyong-1337/JokerPlusDocumentation.git
+cd JokerPlusDocumentation
+```
+
+### 2. Create Virtual Environment (Recommended)
+
+```bash
+# Create virtual environment
+python -m venv venv
+
+# Activate virtual environment
+# On Windows:
+venv\Scripts\activate
+# On macOS/Linux:
+source venv/bin/activate
+```
+
+### 3. Install Dependencies
+
+```bash
+# Install MkDocs with Material theme
+pip install mkdocs-material
+
+# Optional: Install additional plugins if needed
+pip install mkdocs-mermaid2-plugin
+pip install mkdocs-git-revision-date-localized-plugin
+```
 
 ## Usage
 
-### Accessing the Documentation
+### Development Server
 
-1. Navigate to `http://127.0.0.1:8000/` in your browser
-2. You'll see a login modal with authentication form
-3. Use one of the demo credentials:
-   - **Username:** `admin` / **Password:** `admin123`
-   - **Username:** `user` / **Password:** `user123`
-   - **Username:** `demo` / **Password:** `demo`
+Start the development server to preview your documentation:
 
-### Customizing Authentication
-
-Edit `docs/assets/javascripts/auth.js` to modify:
-
-```javascript
-const AUTH_CONFIG = {
-    // Change these credentials for production
-    users: {
-        'your_username': 'your_password',
-        'admin': 'secure_password_here'
-    },
-    sessionTimeout: 24 * 60 * 60 * 1000, // Session duration
-    protectedPaths: ['/'] // Paths that require authentication
-};
+```bash
+mkdocs serve
 ```
 
-### Running the Documentation
+The documentation will be available at `http://127.0.0.1:8000/`
 
-1. **Development mode:**
-   ```bash
-   mkdocs serve
-   ```
+### Custom Port and Host
 
-2. **Production build:**
-   ```bash
-   mkdocs build
-   ```
+To serve on a specific port (e.g., for integration with other services):
 
-## Security Notes
-
-⚠️ **Important:** This is a client-side authentication system designed for basic access control. For production use with sensitive data, consider:
-
-- Using server-side authentication
-- HTTPS encryption
-- More secure password hashing
-- Integration with proper user management systems
-
-## File Structure
-
-```
-docs/
-├── assets/
-│   ├── javascripts/
-│   │   └── auth.js          # Authentication logic
-│   └── stylesheets/
-│       ├── auth.css         # Authentication styles
-│       └── custom.css       # Custom site styles
-└── [other documentation files...]
+```bash
+mkdocs serve --dev-addr 127.0.0.1:7242
 ```
 
-## Deployment
+### Building for Production
 
-When deploying to production:
+Generate static HTML files for deployment:
 
-1. Change the default passwords in `auth.js`
-2. Consider implementing server-side authentication for better security
-3. Use HTTPS to protect credentials in transit
-4. Test the authentication flow thoroughly
+```bash
+mkdocs build
+```
+
+This creates a `site/` directory with all the static files ready for deployment.
+
+### Clean Build
+
+Remove previous build and create a fresh one:
+
+```bash
+mkdocs build --clean
+```
+
+## Project Structure
+
+```
+JokerPlusDocumentation/
+├── docs/                    # Documentation source files
+│   ├── index.md            # Homepage
+│   ├── code_examples.md    # Code examples and syntax reference
+│   ├── changelog.md        # Version history
+│   ├── api/                # API documentation
+│   │   ├── onboarding/     # User onboarding APIs
+│   │   ├── account_settings/
+│   │   ├── wallet/
+│   │   ├── lottery/
+│   │   └── [other API sections]
+│   ├── authentication/     # Auth documentation
+│   ├── reference/         # Reference materials
+│   └── assets/           # Custom styles and scripts
+├── mkdocs.yml            # MkDocs configuration
+├── README.md            # This file
+└── site/               # Generated static files (ignored by git)
+```
+
+## Configuration
+
+The main configuration is in `mkdocs.yml`. Key sections include:
+
+- **site_name**: Documentation title
+- **site_url**: Base URL for the documentation
+- **theme**: Material theme configuration
+- **nav**: Navigation structure
+- **markdown_extensions**: Enabled Markdown extensions
+- **plugins**: Additional functionality
+
+## Customization
+
+### Adding New Pages
+
+1. Create a new `.md` file in the `docs/` directory
+2. Add the page to the navigation in `mkdocs.yml`
+3. Use Markdown syntax for content
+
+### Custom Styling
+
+Edit `docs/assets/stylesheets/custom.css` to add custom styles.
+
+### Adding Code Examples
+
+Use fenced code blocks with language specification:
+
+````markdown
+```python
+def hello_world():
+    return "Hello, JokerPlus!"
+```
+````
+
+## Deployment Options
+
+### GitHub Pages
+
+```bash
+mkdocs gh-deploy
+```
+
+### Manual Deployment
+
+1. Run `mkdocs build`
+2. Upload the `site/` directory contents to your web server
+3. Configure your web server to serve the files
+
+### Docker Deployment
+
+Create a `Dockerfile`:
+
+```dockerfile
+FROM nginx:alpine
+COPY site/ /usr/share/nginx/html/
+EXPOSE 80
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test locally with `mkdocs serve`
+5. Submit a pull request
 
 ## Troubleshooting
 
-- **Login modal not appearing:** Check browser console for JavaScript errors
-- **Styles not loading:** Verify CSS files are properly included in `mkdocs.yml`
-- **Authentication not persisting:** Check if localStorage is enabled in browser
+### Common Issues
 
----
+- **Module not found**: Ensure MkDocs Material is installed (`pip install mkdocs-material`)
+- **Port already in use**: Use a different port (`mkdocs serve --dev-addr 127.0.0.1:8001`)
+- **Changes not reflecting**: Try `Ctrl+F5` to force refresh or use `mkdocs serve --dirtyreload`
 
-**Note:** This authentication system is ideal for internal documentation, team wikis, or situations where you need simple access control without complex server infrastructure.
+### Getting Help
+
+- Check the [MkDocs documentation](https://www.mkdocs.org/)
+- Visit [Material for MkDocs documentation](https://squidfunk.github.io/mkdocs-material/)
+- Open an issue in this repository
