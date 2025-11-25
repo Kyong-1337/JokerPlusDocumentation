@@ -6,7 +6,9 @@ A comprehensive API documentation
 
 - Python 3.8 or higher
 - pip (Python package manager)
-
+- VScode Extensions:
+   - Markdown Table
+   - Python
 ## Installation
 
 ### 1. Clone the Repository
@@ -34,8 +36,6 @@ source venv/bin/activate
 ```bash
 # Install MkDocs with Material theme
 pip install mkdocs-material
-
-# Optional: Install additional plugins if needed
 pip install mkdocs-mermaid2-plugin
 pip install mkdocs-git-revision-date-localized-plugin
 ```

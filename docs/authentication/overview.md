@@ -4,18 +4,18 @@ Before a user logs in, the system will use the <span class="text-green">MAIN API
 
 *Development*
 
-| Name                                         | Url                                                                          |
-| -------------------------------------------- | ---------------------------------------------------------------------------- |
-| <span class="text-green">MAIN API URL</span> | <span class="text-green">https://joker5api231.com/JokerPlus/Main/v6</span> |
-| <span class="text-red">LOCAL API URL</span>  | <span class="text-red">*Get from ResponseData.LocalAPIURL </span>           |
+| Name                                         | Url                                                                        |
+| -------------------------------------------- | -------------------------------------------------------------------------- |
+| <span class="text-green">MAIN API URL</span> | <span class="text-green">Refer to provided URL</span> |
+| <span class="text-red">LOCAL API URL</span>  | <span class="text-red">*Get from ResponseData.LocalAPIURL </span>          |
 
 
 *Production*
 
-| Name                                         | Url                                |
-| -------------------------------------------- | ---------------------------------- |
-| <span class="text-green">MAIN API URL</span> | <span class="text-green">https://main.jokerplus.com/api </span>     |
-| <span class="text-red">LOCAL API URL</span>  | <span class="text-red">*Get from ResponseData.LocalAPIURL </span>   |
+| Name                                         | Url                                                               |
+| -------------------------------------------- | ----------------------------------------------------------------- |
+| <span class="text-green">MAIN API URL</span> | <span class="text-green">Refer to provided url </span>   |
+| <span class="text-red">LOCAL API URL</span>  | <span class="text-red">*Get from ResponseData.LocalAPIURL </span> |
 
 
 ## HTTP Request Headers

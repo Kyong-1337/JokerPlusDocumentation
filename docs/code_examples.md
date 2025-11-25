@@ -18,7 +18,6 @@ This page demonstrates all available MkDocs Material syntax with minimal example
 `Inline code` and normal text
 
 ## Links
-[google](www.gooogle.com )
 [External link](https://mkdocs.org)
 
 [Internal link](index.md)
