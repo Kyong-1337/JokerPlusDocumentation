@@ -119,6 +119,76 @@ The main configuration is in `mkdocs.yml`. Key sections include:
 2. Add the page to the navigation in `mkdocs.yml`
 3. Use Markdown syntax for content
 
+#### Navigation Examples for Beginners
+
+The `nav` section in `mkdocs.yml` defines your site's navigation structure. Here are common patterns:
+
+**Simple Page:**
+```yaml
+nav:
+  - Home: index.md
+  - About: about.md
+  - Contact: contact.md
+```
+
+**Nested Sections:**
+```yaml
+nav:
+  - Home: index.md
+  - API Guide:
+    - Overview: api/overview.md
+    - Authentication: api/auth.md
+    - Endpoints: api/endpoints.md
+  - Examples:
+    - Basic Usage: examples/basic.md
+    - Advanced: examples/advanced.md
+```
+
+**Real Example from This Project:**
+```yaml
+nav:
+  - Home:
+    - Introduction: index.md
+    - Code Examples: code_examples.md
+  - Authentication:
+    - Overview: authentication/overview.md 
+    - Encryption: authentication/encryption.md
+  - API Endpoints:
+    - On Boarding:
+      - Overview: api/onboarding/onboarding.md
+      - Login: api/onboarding/login_by_username.md
+      - Register: api/onboarding/register.md
+```
+
+**Adding a New API Section:**
+
+1. **Create the folder structure:**
+   ```
+   docs/api/payments/
+   ├── payments.md
+   ├── create_payment.md
+   └── refund.md
+   ```
+
+2. **Add to navigation in mkdocs.yml:**
+   ```yaml
+   nav:
+     # ... existing items ...
+     - API Endpoints:
+       # ... existing sections ...
+       - Payments:  # ← New section
+         - Overview: api/payments/payments.md
+         - Create Payment: api/payments/create_payment.md
+         - Process Refund: api/payments/refund.md
+   ```
+
+**Tips for Navigation:**
+- **File paths are relative** to the `docs/` directory
+- **Section names** (left side) can be anything you want
+- **File paths** (right side) must match actual file locations
+- **Indentation matters** - use 2 spaces for each level
+- **Order matters** - items appear in the order you list them
+
 ### Custom Styling
 
 Edit `docs/assets/stylesheets/custom.css` to add custom styles.
