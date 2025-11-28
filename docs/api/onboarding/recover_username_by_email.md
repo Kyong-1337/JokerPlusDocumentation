@@ -6,25 +6,19 @@
 
 | PARAM          | VALUE                                         |
 | :------------- | :-------------------------------------------- |
-| URL            | [MAIN API URL] API URL                        |
-| URL            | [LOCAL API URL] API URL                       |
+| URL            | [Main API URL]/Member/RecoverUsernameByEmail  |
 | Request Method | POST                                          |
-| Request Method | GET                                           |
-| Body Param     | AES_Encrypt([JSON Object], [AES Secret Key]); |
+| Body Params    | AES_Encrypt([JSON Object], [AES Secret Key]); |
 
 
 ## Parameters
 
-| Key Name | Data Type | Mandatory | Length | Description |
-| :------- | :-------- | :-------- | ------ | :---------- |
-|          |           |           |        |             |
+| Key Name | Data Type | Mandatory | Length                              | Description |
+| :------- | :-------- | :-------- | ----------------------------------- | :---------- |
+| Email    | String    | YES       |                                     |             |
+| Hash     | String    | YES       | SHA256(`Email` + `MemberSecretKey`) |             |
 
 
-## Return
-
-| Key Name | Data Type | Mandatory | Length | Description |
-| :------- | :-------- | :-------- | :----- | :---------- |
-|          |           |           |        |             |
 
 
 ## Response
@@ -33,7 +27,9 @@
 
     ```json
     {
-        "Comment": "json here"
+        "ResponseCode": "Int",
+        "ResponseMsg": "String",
+        "ResponseData": null
     }
     ```
 
@@ -41,11 +37,12 @@
 ## Response Code & Message
 
 
-| ResponseCode | ReponseMessage        |
-| ------------ | --------------------- |
-| 2            |                       |
-| 1            |                       |
-| 0            | Success               |
-| -1           | Invalid Access        |
-| -2           | Internal server error |
-| -3           | Unexpected error      |
+| ResponseCode | ReponseMessage              |
+| ------------ | --------------------------- |
+| 0            | Username is sended to email |
+| -1           | Invalid Access              |
+| -2           | Internal Server Error       |
+| -3           | Unexpected error            |
+| -4           | Invalid email               |
+| -5           | User not found              |
+| -6           | Fail to send email          |

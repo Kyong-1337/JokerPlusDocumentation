@@ -6,25 +6,18 @@
 
 | PARAM          | VALUE                                         |
 | :------------- | :-------------------------------------------- |
-| URL            | [MAIN API URL] API URL                        |
-| URL            | [LOCAL API URL] API URL                       |
+| URL            | [LOCAL API URL]/Member/UpdateWinNoticeStatus  |
 | Request Method | POST                                          |
-| Request Method | GET                                           |
-| Body Param     | AES_Encrypt([JSON Object], [AES Secret Key]); |
+| Body Params    | AES_Encrypt([JSON Object], [AES Secret Key]); |
 
 
 ## Parameters
 
-| Key Name | Data Type | Mandatory | Length | Description |
-| :------- | :-------- | :-------- | ------ | :---------- |
-|          |           |           |        |             |
-
-
-## Return
-
-| Key Name | Data Type | Mandatory | Length | Description |
-| :------- | :-------- | :-------- | :----- | :---------- |
-|          |           |           |        |             |
+| Key Name    | Data Type | Mandatory | Description                                            |
+| :---------- | :-------- | :-------- | ------------------------------------------------------ |
+| MemberId    | Int       | YES       |                                                        |
+| WinNoticeId | Int       | YES       |                                                        |
+| Hash        | String    | YES       | SHA256(`MemberId` + `WinNoticeId` + `MemberSecretKey`) |
 
 
 ## Response
@@ -33,7 +26,9 @@
 
     ```json
     {
-        "Comment": "json here"
+        "ResponseCode": "Int",
+        "ResponseMsg": "String",
+        "ResponseData": null
     }
     ```
 
@@ -41,11 +36,6 @@
 ## Response Code & Message
 
 
-| ResponseCode | ReponseMessage        |
-| ------------ | --------------------- |
-| 2            |                       |
-| 1            |                       |
-| 0            | Success               |
-| -1           | Invalid Access        |
-| -2           | Internal server error |
-| -3           | Unexpected error      |
+| ResponseCode | ReponseMessage |
+| ------------ | -------------- |
+| 0            | Success        |

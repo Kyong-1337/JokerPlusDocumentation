@@ -1,30 +1,27 @@
 
 # Reset Pin
-
+PINReset_confirmation
 
 ## Requests
 
 | PARAM          | VALUE                                         |
 | :------------- | :-------------------------------------------- |
-| URL            | [MAIN API URL] API URL                        |
-| URL            | [LOCAL API URL] API URL                       |
+| URL            | [LOCAL API URL]/Member/ResetPin               |
 | Request Method | POST                                          |
-| Request Method | GET                                           |
-| Body Param     | AES_Encrypt([JSON Object], [AES Secret Key]); |
+| Body Params    | AES_Encrypt([JSON Object], [AES Secret Key]); |
 
 
 ## Parameters
 
-| Key Name | Data Type | Mandatory | Length | Description |
-| :------- | :-------- | :-------- | ------ | :---------- |
-|          |           |           |        |             |
+| Key Name | Data Type | Mandatory | Length | Description                                    |
+| :------- | :-------- | :-------- | ------ | :--------------------------------------------- |
+| MemberId | Int       | YES       |        |                                                |
+| Pin      | String    | YES       | 4      |                                                |
+| Hash     | String    | YES       |        | SHA256(`MemberId` + `Pin` + `MemberSecretKey`) |
 
 
 ## Return
 
-| Key Name | Data Type | Mandatory | Length | Description |
-| :------- | :-------- | :-------- | :----- | :---------- |
-|          |           |           |        |             |
 
 
 ## Response
@@ -33,7 +30,9 @@
 
     ```json
     {
-        "Comment": "json here"
+        "ResponseCode": "Int",
+        "ResponseMsg": "String",
+        "ResponseData": null
     }
     ```
 
@@ -43,8 +42,6 @@
 
 | ResponseCode | ReponseMessage        |
 | ------------ | --------------------- |
-| 2            |                       |
-| 1            |                       |
 | 0            | Success               |
 | -1           | Invalid Access        |
 | -2           | Internal server error |

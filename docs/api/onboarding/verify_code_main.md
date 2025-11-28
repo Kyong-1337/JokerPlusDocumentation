@@ -6,25 +6,20 @@
 
 | PARAM          | VALUE                                         |
 | :------------- | :-------------------------------------------- |
-| URL            | [MAIN API URL] API URL                        |
-| URL            | [LOCAL API URL] API URL                       |
+| URL            | [MAIN API URL]/Member/VerifyCode              |
 | Request Method | POST                                          |
-| Request Method | GET                                           |
 | Body Param     | AES_Encrypt([JSON Object], [AES Secret Key]); |
 
 
 ## Parameters
 
-| Key Name | Data Type | Mandatory | Length | Description |
-| :------- | :-------- | :-------- | ------ | :---------- |
-|          |           |           |        |             |
-
-
-## Return
-
-| Key Name | Data Type | Mandatory | Length | Description |
-| :------- | :-------- | :-------- | :----- | :---------- |
-|          |           |           |        |             |
+| Key Name   | Data Type | Mandatory | Description                                                                        |
+| :--------- | :-------- | :-------- | :--------------------------------------------------------------------------------- |
+| Action     | Int       | YES       | Refer to [Member Action](../../reference/reference_codes.md#member-action)         |
+| Type       | Int       | YES       | Refer to [Send Message Type](../../reference/reference_codes.md#send-message-type) |
+| Contact    | String    | YES       | Email or phone Format 61xxxxxxxxx (phone Only Digit allow)                         |
+| VerifyCode | String    | YES       | Verify Code                                                                        |
+| Hash       | String    | YES       | SHA256( `Action` + `Type` + `Contact` + `VerifyCode` + `SHA256 Salt Key`)          |
 
 
 ## Response
@@ -33,7 +28,9 @@
 
     ```json
     {
-        "Comment": "json here"
+        "ResponseCode": "Int",
+        "ResponseMsg": "String",
+        "ResponseData": null
     }
     ```
 
@@ -41,11 +38,12 @@
 ## Response Code & Message
 
 
-| ResponseCode | ReponseMessage        |
-| ------------ | --------------------- |
-| 2            |                       |
-| 1            |                       |
-| 0            | Success               |
-| -1           | Invalid Access        |
-| -2           | Internal server error |
-| -3           | Unexpected error      |
+| ResponseCode | ReponseMessage               |
+| ------------ | ---------------------------- |
+| 3            | Code not match               |
+| 2            | Exceed request, code expired |
+| 1            | Invalid code request         |
+| 0            | Success                      |
+| -1           | Invalid Access               |
+| -2           | Internal server error        |
+| -3           | Unexpected error             |

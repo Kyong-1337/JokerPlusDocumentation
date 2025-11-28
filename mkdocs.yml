@@ -1,11 +1,13 @@
 site_name: JokerPlus Documentation
 site_description: Documentation for JokerPlus
-site_author: Your Name
+site_author: Jokerplus
+# site_url: https://joker5api231.com/jokerplus/jokerplusdocumentation/docs
 site_url: https://localhost:7242/docs/
 use_directory_urls: true
 
 theme:
   name: material
+  custom_dir: docs/overrides
   palette:
     # Palette toggle for light mode
     - scheme: default
@@ -92,11 +94,11 @@ plugins:
   - search
 
 
-extra:
-  consent:
-    title: Cookie consent
-    description: >
-      This page uses cookie
+# extra:
+#   consent:
+#     title: Cookie consent
+#     description: >
+#       This page uses cookie
 
 nav:
   - Home:
@@ -150,6 +152,7 @@ nav:
       - Overview: api/feedback/feedback.md
     - Soccer:
       - Overview: api/soccer/soccer.md
+      - Match Trend: api/soccer/get_match_trend.md
     - VIP Benefit:
       - Overview: api/vip/vip_benefit.md
     - Customer Service:

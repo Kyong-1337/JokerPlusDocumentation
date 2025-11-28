@@ -1,30 +1,21 @@
 
 # Get Interest List
-
+Application: Choose Interest
 
 ## Requests
 
 | PARAM          | VALUE                                         |
 | :------------- | :-------------------------------------------- |
-| URL            | [MAIN API URL] API URL                        |
-| URL            | [LOCAL API URL] API URL                       |
+| URL            | [LOCAL API URL]/Member/GetInterestList        |
 | Request Method | POST                                          |
-| Request Method | GET                                           |
-| Body Param     | AES_Encrypt([JSON Object], [AES Secret Key]); |
-
+| Body Params    | AES_Encrypt([JSON Object], [AES Secret Key]); |
 
 ## Parameters
 
-| Key Name | Data Type | Mandatory | Length | Description |
-| :------- | :-------- | :-------- | ------ | :---------- |
-|          |           |           |        |             |
-
-
-## Return
-
-| Key Name | Data Type | Mandatory | Length | Description |
-| :------- | :-------- | :-------- | :----- | :---------- |
-|          |           |           |        |             |
+| Key Name | Data Type | Mandatory | Description                            |
+| :------- | :-------- | :-------- | :------------------------------------- |
+| MemberId | Int       | YES       |                                        |
+| Hash     | String    | YES       | SHA256(`MemberId` + `MemberSecretKey`) |
 
 
 ## Response
@@ -33,7 +24,14 @@
 
     ```json
     {
-        "Comment": "json here"
+        "ResponseCode": "Int",
+        "ResponseMsg": "String",
+        "ResponseData": [
+            {
+                "Id": "Int",
+                "Name": "String"
+            }
+        ]
     }
     ```
 
@@ -41,11 +39,10 @@
 ## Response Code & Message
 
 
-| ResponseCode | ReponseMessage        |
-| ------------ | --------------------- |
-| 2            |                       |
-| 1            |                       |
-| 0            | Success               |
-| -1           | Invalid Access        |
-| -2           | Internal server error |
-| -3           | Unexpected error      |
+| ResponseCode | ReponseMessage          |
+| ------------ | ----------------------- |
+| 0            | Success                 |
+| -1           | Invalid Access          |
+| -2           | Internal Server Error   |
+| -3           | Unexpected error        |
+| -4           | Interest list not found |

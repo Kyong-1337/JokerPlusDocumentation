@@ -1,30 +1,23 @@
 
 # Save Member Interest
-
+Application: Choose Interest
 
 ## Requests
 
 | PARAM          | VALUE                                         |
 | :------------- | :-------------------------------------------- |
-| URL            | [MAIN API URL] API URL                        |
-| URL            | [LOCAL API URL] API URL                       |
+| URL            | [LOCAL API URL]/Member/MemberSaveInterest     |
 | Request Method | POST                                          |
-| Request Method | GET                                           |
-| Body Param     | AES_Encrypt([JSON Object], [AES Secret Key]); |
-
+| Body Params    | AES_Encrypt([JSON Object], [AES Secret Key]); |
 
 ## Parameters
 
-| Key Name | Data Type | Mandatory | Length | Description |
-| :------- | :-------- | :-------- | ------ | :---------- |
-|          |           |           |        |             |
+| Key Name      | Data Type | Mandatory | Description                            |
+| :------------ | :-------- | :-------- | :------------------------------------- |
+| MemberId      | Int       | YES       |                                        |
+| InterestArrId | Int[]     | YES       | Array of Interest Id                   |
+| Hash          | String    | YES       | SHA256(`MemberId` + `MemberSecretKey`) |
 
-
-## Return
-
-| Key Name | Data Type | Mandatory | Length | Description |
-| :------- | :-------- | :-------- | :----- | :---------- |
-|          |           |           |        |             |
 
 
 ## Response
@@ -33,7 +26,9 @@
 
     ```json
     {
-        "Comment": "json here"
+        "ResponseCode": "Int",
+        "ResponseMsg": "String",
+        "ResponseData": null
     }
     ```
 
@@ -43,9 +38,8 @@
 
 | ResponseCode | ReponseMessage        |
 | ------------ | --------------------- |
-| 2            |                       |
-| 1            |                       |
+| 1            | No interest data      |
 | 0            | Success               |
 | -1           | Invalid Access        |
-| -2           | Internal server error |
+| -2           | Internal Server Error |
 | -3           | Unexpected error      |

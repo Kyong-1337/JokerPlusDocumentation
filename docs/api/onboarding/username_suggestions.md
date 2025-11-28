@@ -6,26 +6,16 @@
 
 | PARAM          | VALUE                                         |
 | :------------- | :-------------------------------------------- |
-| URL            | [MAIN API URL] API URL                        |
-| URL            | [LOCAL API URL] API URL                       |
+| URL            | [MAIN API URL]/Member/UsernameSuggestions     |
 | Request Method | POST                                          |
-| Request Method | GET                                           |
 | Body Param     | AES_Encrypt([JSON Object], [AES Secret Key]); |
 
 
 ## Parameters
 
-| Key Name | Data Type | Mandatory | Length | Description |
-| :------- | :-------- | :-------- | ------ | :---------- |
-|          |           |           |        |             |
-
-
-## Return
-
-| Key Name | Data Type | Mandatory | Length | Description |
-| :------- | :-------- | :-------- | :----- | :---------- |
-|          |           |           |        |             |
-
+| Key Name | Data Type | Mandatory | Length | Description               |
+| :------- | :-------- | :-------- | ------ | :------------------------ |
+| HASH     | String    | YES       |        | SHA256(`SHA256 Salt Key`) |
 
 ## Response
 
@@ -33,7 +23,11 @@
 
     ```json
     {
-        "Comment": "json here"
+        "ResponseCode": "Int",
+        "ResponseMsg": “string”   
+        "ResponseData": [
+            "String"
+        ]
     }
     ```
 
@@ -43,9 +37,4 @@
 
 | ResponseCode | ReponseMessage        |
 | ------------ | --------------------- |
-| 2            |                       |
-| 1            |                       |
 | 0            | Success               |
-| -1           | Invalid Access        |
-| -2           | Internal server error |
-| -3           | Unexpected error      |
